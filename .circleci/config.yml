@@ -14,15 +14,14 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
-   
+  
     steps:
       - checkout
 
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "https://github.com/Techwilliam/CircleCISeeTest/blob/master/SeeTestGradle/build.gradle" }}
+            - v1-dependencies-{{ checksum "build.gradle" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
@@ -31,7 +30,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "https://github.com/Techwilliam/CircleCISeeTest/blob/master/SeeTestGradle/build.gradle" }}
+          key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
       - run: gradle test
