@@ -16,11 +16,6 @@ jobs:
 
     working_directory: ~/repo
    
-              environment:
-                  # Customize the JVM maximum heap limit
-                       _JAVA_OPTIONS: -Xmx3200m
-                        TERM: dumb
-
     steps:
       - checkout
 
